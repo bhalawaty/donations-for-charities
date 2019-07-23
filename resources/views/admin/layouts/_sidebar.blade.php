@@ -33,8 +33,10 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> add case </a></li>
-                    <li><a href="index2.html"><i class="fa fa-circle-o"></i> all cases</a></li>
+                    <li class="active"><a href="{{route('admin.charity.dashboard')}}"><i class="fa fa-circle-o"></i> add
+                            case </a></li>
+                    <li><a href="{{route('admin.charity.all.dashboard',Auth::guard("admins")->id())}}"><i
+                                class="fa fa-circle-o"></i> all cases</a></li>
                 </ul>
             </li>
             <li class="treeview">

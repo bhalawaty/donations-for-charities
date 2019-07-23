@@ -21,7 +21,7 @@ class CreateStatesTable extends Migration
 
             $table->unsignedInteger('amount');
             $table->unsignedInteger('current_amount')->nullable();
-            $table->string('description');
+            $table->string('description', '200');
             $table->timestamps();
 
         });

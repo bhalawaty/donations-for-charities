@@ -18,8 +18,8 @@ class Admin extends Authenticatable
         'name', 'email', 'password', 'role'
     ];
 
-    public function state()
+    public function states()
     {
-        return $this->hasMany(state::class);
+        return $this->hasMany(State::class);
     }
 }

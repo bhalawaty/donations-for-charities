@@ -43,7 +43,7 @@
     <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-        <form action="/loginAdmin" method="post">
+        <form action="{{route('admin.auth.loginAdmin')}}" method="post">
             @csrf
 
             <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">

@@ -9,7 +9,7 @@
     <section class="content-header">
 
         <h1>
-            write your case
+            edit your case
 
         </h1>
 
@@ -20,19 +20,19 @@
 
         <section class="content">
 
-            <form method="Post" action="{{route('addCase.charity')}}">
+            <form method="POST" action="{{route('updateCase.charity',$case->id)}}">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputEmail1">case description </label>
-                    <textarea type="text" name="description" class="form-control" required></textarea>
+                    <textarea type="text" name="description" class="form-control">{{$case->description}}</textarea>
                     <small id="emailHelp" class="form-text text-muted"></small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">amount of Money </label>
-                    <input type="number" name="amount" class="form-control" required>
+                    <input type="number" name="amount" class="form-control" value="{{$case->amount}}">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">update</button>
             </form>
 
         </section>

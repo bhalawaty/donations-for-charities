@@ -32,10 +32,10 @@ class AdminLoginController extends Controller
     public function loginAdmin(Request $request)
     {
 
-//        $this->Validate($request, [
-//            $this->username() => 'required|email',
-//            'password' => 'required|min:6'
-//        ]);
+        $this->Validate($request, [
+            $this->username() => 'required|email',
+            'password' => 'required|min:6'
+        ]);
 
 
         if (Auth::guard('admins')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {

@@ -160,7 +160,6 @@
 {!! Html::script('admins/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') !!}
 
 <!-- Slimscroll -->
-@yield('footer')
 
 {!! Html::script('admins/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') !!}
 
@@ -180,6 +179,10 @@
 
 {!! Html::script('admins/dist/js/demo.js') !!}
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha256-KsRuvuRtUVvobe66OFtOQfjP8WA2SzYsmm4VPfMnxms=" crossorigin="anonymous"></script>
+@include('sweet::alert')
+@yield('footer')
 
 </body>
 

@@ -4,8 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class state extends Model
+class State extends Model
 {
+
+    protected $guarded = [];
+
     public function charity()
     {
         return $this->belongsTo(Admin::class);

@@ -26,6 +26,10 @@
                         <div class="box-header">
                             <h3 class="box-title">Hover Data Table</h3>
                         </div>
+                        <button type="submit" class="btn btn-primary"><a style="color: white"
+                                                                         href="{{route('admin.charity.dashboard')}}">add
+                                new case</a></button>
+
                         <!-- /.box-header -->
                         <div class="box-body">
                             <table id="example2" class="table table-bordered table-hover">
@@ -36,7 +40,8 @@
                                     <th>descriptions</th>
                                     <th>amount</th>
                                     <th>Current amount</th>
-
+                                    <th>delete</th>
+                                    <th>update</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -46,11 +51,22 @@
                                         <td>{{$case->description}}</td>
                                         <td>{{$case->amount}}</td>
                                         <td>{{$case->current_amount}}</td>
-
+                                        <th>
+                                            <form id="form" method="POST"
+                                                  action="{{route('deleteCase.charity',$case->id)}}">
+                                                @csrf
+                                                <button type="submit" name="archive" class="btn btn-danger"
+                                                        onclick="archiveFunction()">Delete
+                                                </button>
+                                            </form>
+                                        </th>
+                                        <th>
+                                            <button type="submit" class="btn btn-primary"><a style="color: white"
+                                                                                             href="{{route('updateCaseView.charity',$case->id)}}">edit</a>
+                                            </button>
+                                        </th>
                                     </tr>
                                 @endforeach
-
-
                                 </tbody>
                                 <tfoot>
                                 <tr>
@@ -58,7 +74,8 @@
                                     <th>descriptions</th>
                                     <th>amount</th>
                                     <th>Current amount</th>
-
+                                    <th>delete</th>
+                                    <th>update</th>
 
                                 </tr>
                                 </tfoot>
@@ -86,7 +103,9 @@
     {!! Html::script('admins/bower_components/datatables.net/js/jquery.dataTables.min.js') !!}
 
     {!! Html::script('admins/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') !!}
+    <script>
 
+    </script>
     <!-- page script -->
     <script>
         $(function () {
