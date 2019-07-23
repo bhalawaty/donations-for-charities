@@ -12,6 +12,10 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
+    'roles' => [
+        'admin' => 1,
+        'charity' => 2,
+    ],
 
     'defaults' => [
         'guard' => 'web',
@@ -46,6 +50,10 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'admins' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ]
     ],
 
     /*
@@ -70,11 +78,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ]
     ],
 
     /*
@@ -98,6 +105,12 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ]
+
     ],
 
 ];
