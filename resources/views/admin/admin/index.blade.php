@@ -40,15 +40,16 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($cases as $case)
-                                    <tr>
-                                        <td>{{$case->id}}</td>
-                                        <td>{{$case->description}}</td>
-                                        <td>{{$case->amount}}</td>
-                                        <td>{{$case->current_amount}}</td>
 
-                                    </tr>
-                                @endforeach
+                                {{--                                @foreach($cases as $case)--}}
+                                {{--                                    <tr>--}}
+                                {{--                                        <td>{{$case->id}}</td>--}}
+                                {{--                                        <td>{{$case->description}}</td>--}}
+                                {{--                                        <td>{{$case->amount}}</td>--}}
+                                {{--                                        <td>{{$case->current_amount}}</td>--}}
+
+                                {{--                                    </tr>--}}
+                                {{--                                @endforeach--}}
 
 
                                 </tbody>
