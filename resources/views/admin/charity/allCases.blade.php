@@ -4,6 +4,9 @@
 
 @endsection
 
+@section('header')
+
+@endsection
 @section('content')
 
     <section class="content-header">
@@ -104,7 +107,23 @@
 
     {!! Html::script('admins/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') !!}
     <script>
-
+        function archiveFunction() {
+            event.preventDefault(); // prevent form submit
+            var form = event.target.form; // storing the form
+            swal({
+                title: "Are you sure?",
+                text: "Are you sure to delete this case u will not be able to retrieve it.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((isConfirm) => {
+                if (isConfirm) {
+                    form.submit();          // submitting the form when user press yes
+                } else {
+                    swal("Cancelled", "Your case is safe :)", "error");
+                }
+            });
+        }
     </script>
     <!-- page script -->
     <script>
