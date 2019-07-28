@@ -18,7 +18,7 @@ class IsUserAdmin
     {
         if (!Auth::guard("admins")->check()) {
 
-            return redirect('adminLogin');
+            return redirect('dashboard/adminLogin');
 
         }
         return $next($request);
