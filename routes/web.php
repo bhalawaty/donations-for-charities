@@ -39,6 +39,8 @@ Route::group(['middleware' => 'admin'], function () {
 
         Route::post('/case/{case}/update', 'admin\CharityController@update')->name('updateCase.charity');
 
+        Route::post('/admin/{case}/delete', 'admin\AdminController@destroy')->name('adminDeleteCase.charity');
+
         Route::post('/case/{case}/delete', 'admin\CharityController@destroy')->name('deleteCase.charity');
 
         Route::get('/case/{case}/', 'admin\CharityController@updateview')->name('updateCaseView.charity');

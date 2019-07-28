@@ -36,20 +36,30 @@
                                     <th>descriptions</th>
                                     <th>amount</th>
                                     <th>Current amount</th>
+                                    <th>charity name</th>
 
                                 </tr>
                                 </thead>
                                 <tbody>
 
-                                {{--                                @foreach($cases as $case)--}}
-                                {{--                                    <tr>--}}
-                                {{--                                        <td>{{$case->id}}</td>--}}
-                                {{--                                        <td>{{$case->description}}</td>--}}
-                                {{--                                        <td>{{$case->amount}}</td>--}}
-                                {{--                                        <td>{{$case->current_amount}}</td>--}}
-
-                                {{--                                    </tr>--}}
-                                {{--                                @endforeach--}}
+                                @foreach($cases as $case)
+                                    <tr>
+                                        <td>{{$case->id}}</td>
+                                        <td>{{$case->description}}</td>
+                                        <td>{{$case->amount}}</td>
+                                        <td>{{$case->current_amount}}</td>
+                                        <td>{{$case->charity->name}}</td>
+                                        <td>
+                                            <form id="form" method="POST"
+                                                  action="{{route('adminDeleteCase.charity',$case->id)}}">
+                                                @csrf
+                                                <button type="submit" name="archive" class="btn btn-danger"
+                                                        onclick="archiveFunction()">Delete
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
 
                                 </tbody>
@@ -59,6 +69,7 @@
                                     <th>descriptions</th>
                                     <th>amount</th>
                                     <th>Current amount</th>
+                                    <th>charity name</th>
 
 
                                 </tr>
@@ -87,7 +98,25 @@
     {!! Html::script('admins/bower_components/datatables.net/js/jquery.dataTables.min.js') !!}
 
     {!! Html::script('admins/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') !!}
-
+    <script>
+        function archiveFunction() {
+            event.preventDefault(); // prevent form submit
+            var form = event.target.form; // storing the form
+            swal({
+                title: "Are you sure?",
+                text: "Are you sure to delete this case u will not be able to retrieve it.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((isConfirm) => {
+                if (isConfirm) {
+                    form.submit();          // submitting the form when user press yes
+                } else {
+                    swal("Cancelled", "Your case is safe :)", "error");
+                }
+            });
+        }
+    </script>
     <!-- page script -->
     <script>
         $(function () {

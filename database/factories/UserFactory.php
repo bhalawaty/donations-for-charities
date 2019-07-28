@@ -34,7 +34,7 @@ $factory->define(User::class, function (Faker $faker) {
 $factory->define(Admin::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'role' => $faker->numberBetween(1, 2),
+        'role' => 1,
         'email' => $faker->unique()->safeEmail,
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
     ];
@@ -47,7 +47,7 @@ $factory->define(State::class, function (Faker $faker) {
         'current_amount' => $faker->randomNumber(4),
         'description' => $faker->text(200),
         'admin_id' => function () {
-            return factory(App\Admin::class)->create()->id;
+            return factory(App\Admin::class)->create(['role' => 2])->id;
         },
     ];
 
