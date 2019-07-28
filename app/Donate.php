@@ -2,12 +2,25 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Donate extends Model
 {
 
     protected $guarded = [];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('user', function (Builder $builder) {
+            $builder->with('user');
+        });
+        static::addGlobalScope('state', function (Builder $builder) {
+            $builder->with('state');
+        });
+    }
 
     public function state()
     {
@@ -18,5 +31,6 @@ class Donate extends Model
     {
         return $this->belongsTo(User::class);
     }
+
 
 }

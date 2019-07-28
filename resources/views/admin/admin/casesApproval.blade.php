@@ -25,45 +25,49 @@
                     <div class="box">
                         <div class="box-header">
                             <h3 class="box-title">Hover Data Table</h3>
-                            <h3>
-                                <button type="submit" class="btn btn-primary"><a style="color: white"
-                                                                                 href="{{route('admin.case.approval')}}">cases
-                                        approval</a></button>
-                            </h3>
+                            <h3></h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <table id="example2" class="table table-bordered table-hover">
+                            <table id="example2" class="table table-bordered table-hover" style="text-align: center">
                                 <thead>
 
                                 <tr>
                                     <th>id</th>
-                                    <th>descriptions</th>
                                     <th>amount</th>
-                                    <th>Current amount</th>
-                                    <th>charity name</th>
-
+                                    <th>user name</th>
+                                    <th>state name</th>
+                                    <th colspan="2">approval</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
-                                @foreach($cases as $case)
+                                @foreach($donates as $donate)
                                     <tr>
-                                        <td>{{$case->id}}</td>
-                                        <td>{{$case->description}}</td>
-                                        <td>{{$case->amount}}</td>
-                                        <td>{{$case->current_amount}}</td>
-                                        <td>{{$case->charity->name}}</td>
+                                        <td>{{$donate->id}}</td>
+                                        <td>{{$donate->amount}}</td>
+                                        <td>{{$donate->user->name}}</td>
+                                        <td>{{$donate->state->charity->name}}</td>
+
                                         <td>
                                             <form id="form" method="POST"
-                                                  action="{{route('adminDeleteCase.admin',$case->id)}}">
+                                                  action="{{route('approve.donate',$donate->id)}}">
                                                 @csrf
-                                                <button type="submit" name="archive" class="btn btn-danger"
-                                                        onclick="archiveFunction()">Delete
+                                                <button type="submit" name="archive" class="btn btn-success"
+                                                    {{$donate->approval == 1? 'disabled':''}} >approve
                                                 </button>
                                             </form>
                                         </td>
-                                    </tr>
+                                        <td>
+                                            <form id="form" method="POST"
+                                                  action="{{route('reject.donate',$donate->id)}}">
+                                                @csrf
+                                                <button type="submit" name="archive" class="btn btn-danger"
+                                                >reject
+                                                </button>
+                                            </form>
+                                        </td>
+
                                 @endforeach
 
 
@@ -71,10 +75,10 @@
                                 <tfoot>
                                 <tr>
                                     <th>id</th>
-                                    <th>descriptions</th>
                                     <th>amount</th>
-                                    <th>Current amount</th>
-                                    <th>charity name</th>
+                                    <th>user name</th>
+                                    <th>state name</th>
+                                    <th>approval</th>
 
 
                                 </tr>

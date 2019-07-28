@@ -35,11 +35,19 @@ Route::group(['middleware' => 'admin'], function () {
 
         Route::get('/admin', 'admin\AdminController@index')->name('admin.admin.dashboard');
 
+        Route::post('/admin/{case}/delete', 'admin\AdminController@destroy')->name('adminDeleteCase.admin');
+
+        Route::get('/admin/approval', 'admin\AdminController@approval')->name('admin.case.approval');
+
+        Route::post('/admin/approve/{donate}', 'admin\AdminController@approve')->name('approve.donate');
+        Route::post('/admin/reject/{donate}', 'admin\AdminController@reject')->name('reject.donate');
+
+
+
         Route::get('/charity', 'admin\CharityController@index')->name('admin.charity.dashboard');
 
         Route::post('/case/{case}/update', 'admin\CharityController@update')->name('updateCase.charity');
 
-        Route::post('/admin/{case}/delete', 'admin\AdminController@destroy')->name('adminDeleteCase.charity');
 
         Route::post('/case/{case}/delete', 'admin\CharityController@destroy')->name('deleteCase.charity');
 

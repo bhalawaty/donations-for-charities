@@ -23,7 +23,7 @@ class CreateDonatesTable extends Migration
             $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
 
             $table->unsignedInteger('amount');
-            $table->unsignedInteger('approval');
+            $table->unsignedInteger('approval')->nullable();
             $table->timestamps();
 
 

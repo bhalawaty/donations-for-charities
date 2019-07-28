@@ -22,4 +22,5 @@ class Admin extends Authenticatable
     {
         return $this->hasMany(State::class);
     }
+
 }

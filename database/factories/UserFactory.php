@@ -63,7 +63,7 @@ $factory->define(Donate::class, function (Faker $faker) {
             return factory(App\State::class)->create()->id;
         },
         'amount' => $faker->randomNumber(4),
-        'approval' => $faker->numberBetween(0, 1),
+//        'approval' => $faker->numberBetween(0, 1),
     ];
 
 });

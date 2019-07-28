@@ -41,4 +41,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Donate::class);
     }
+
+
+    public function isApproved()
+    {
+        return $this->donates()->where('approval', 1);
+    }
+
+    public function isRejected()
+    {
+        return $this->donates()->where('approval', 0);
+    }
 }
