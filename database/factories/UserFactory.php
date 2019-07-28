@@ -4,6 +4,7 @@
 
 use App\Admin;
 use App\User;
+use App\Donate;
 use App\State;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
@@ -23,7 +24,6 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
     ];
@@ -49,6 +49,21 @@ $factory->define(State::class, function (Faker $faker) {
         'admin_id' => function () {
             return factory(App\Admin::class)->create()->id;
         },
+    ];
+
+});
+
+
+$factory->define(Donate::class, function (Faker $faker) {
+    return [
+        'user_id' => function () {
+            return factory(App\User::class)->create()->id;
+        },
+        'state_id' => function () {
+            return factory(App\State::class)->create()->id;
+        },
+        'amount' => $faker->randomNumber(4),
+        'approval' => $faker->numberBetween(0, 1),
     ];
 
 });

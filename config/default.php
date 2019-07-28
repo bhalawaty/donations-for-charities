@@ -5,7 +5,7 @@ return [
         [
             'name' => 'bilal',
             'email' => 'bilal@admin.com',
-            'password' => 'bilal',
+            'password' => 'halawaty',
             'role' => 1
         ],
         [
