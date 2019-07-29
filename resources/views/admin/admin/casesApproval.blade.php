@@ -62,9 +62,11 @@
                                             <form id="form" method="POST"
                                                   action="{{route('reject.donate',$donate->id)}}">
                                                 @csrf
+                                                {{--                                                {{dd($donate->time())}}--}}
                                                 <button type="submit" name="archive" class="btn btn-danger"
                                                 >reject
                                                 </button>
+
                                             </form>
                                         </td>
 
